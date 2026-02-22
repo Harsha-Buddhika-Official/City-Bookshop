@@ -16,7 +16,7 @@ public class Manager extends User {
     @Override
     public String getPermissions() {
         return "View Books, Search Books, Search by Category/Name/Price, " +
-               "Create Accounts, Add Books, Add Categories";
+                "Create Accounts, Add Books, Add Categories";
     }
 
     // Factory method to parse from file

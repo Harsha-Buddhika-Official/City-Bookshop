@@ -58,21 +58,30 @@ public class LoginFrame extends JFrame {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         // Username
-        gbc.gridx = 0; gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         formPanel.add(new JLabel("Username:"), gbc);
-        gbc.gridx = 1; gbc.gridy = 0; gbc.weightx = 1.0;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
         usernameField = new JTextField(15);
         formPanel.add(usernameField, gbc);
 
         // Password
-        gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0;
         formPanel.add(new JLabel("Password:"), gbc);
-        gbc.gridx = 1; gbc.gridy = 1; gbc.weightx = 1.0;
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.weightx = 1.0;
         passwordField = new JPasswordField(15);
         formPanel.add(passwordField, gbc);
 
         // Login button
-        gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
         gbc.insets = new Insets(15, 5, 5, 5);
         JButton loginBtn = new JButton("Login");
         loginBtn.setBackground(new Color(34, 85, 136));

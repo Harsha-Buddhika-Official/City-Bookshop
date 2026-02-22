@@ -11,7 +11,7 @@ public class Book {
     private String description;
 
     public Book(String isbn, String name, String author, String category,
-                double price, int stockQuantity, String description) {
+            double price, int stockQuantity, String description) {
         this.isbn = isbn;
         this.name = name;
         this.author = author;
@@ -22,35 +22,71 @@ public class Book {
     }
 
     // Getters and Setters (Encapsulation)
-    public String getIsbn() { return isbn; }
-    public void setIsbn(String isbn) { this.isbn = isbn; }
+    public String getIsbn() {
+        return isbn;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
+    public String getName() {
+        return name;
+    }
 
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public String getAuthor() {
+        return author;
+    }
 
-    public int getStockQuantity() { return stockQuantity; }
-    public void setStockQuantity(int stockQuantity) { this.stockQuantity = stockQuantity; }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public boolean isInStock() {
         return stockQuantity > 0;
     }
 
-    // Serialize to file string (| delimiter to avoid conflicts with description commas)
+    // Serialize to file string (| delimiter to avoid conflicts with description
+    // commas)
     public String toFileString() {
         return isbn + "|" + name + "|" + author + "|" + category + "|" +
-               price + "|" + stockQuantity + "|" + description;
+                price + "|" + stockQuantity + "|" + description;
     }
 
     // Deserialize from file string
