@@ -9,6 +9,7 @@ import com.citybookshop.util.Constants;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Locale.Category;
 
 // Inheritance: ManagerDashboard extends CashierDashboard
 // Manager has all cashier capabilities + additional manager-only features
@@ -57,10 +58,12 @@ public class ManagerDashboard extends CashierDashboard {
 
         JButton addBookBtn = new JButton("+ Add New Book");
         styleButton(addBookBtn, new Color(0, 0, 0));
+        addBookBtn.setForeground(Color.BLACK);
         addBookBtn.addActionListener(e -> showAddBookDialog());
 
         JButton addCategoryBtn = new JButton("+ Add Category");
         styleButton(addCategoryBtn, new Color(0, 0, 0));
+        addCategoryBtn.setForeground(Color.BLACK);
         addCategoryBtn.addActionListener(e -> showAddCategoryDialog());
 
         JButton createAccountBtn = new JButton("+ Create Account");
