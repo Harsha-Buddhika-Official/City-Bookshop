@@ -1,0 +1,5 @@
+CAT001|Fiction|Fictional stories and novels
+CAT002|Non-Fiction|Factual and educational books
+CAT003|Science|Science and technology books
+CAT004|History|Historical books and biographies
+CAT005|Children|Books for children

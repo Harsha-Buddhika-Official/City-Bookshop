@@ -111,8 +111,8 @@ public class CashierDashboard extends JFrame {
         searchPanel.add(Box.createVerticalStrut(10));
 
         JButton searchBtn = new JButton("Search");
-        searchBtn.setBackground(new Color(34, 85, 136));
-        searchBtn.setForeground(Color.WHITE);
+        searchBtn.setBackground(new Color(0, 0, 0));
+        searchBtn.setForeground(Color.BLACK);
         searchBtn.setFocusPainted(false);
         searchBtn.addActionListener(e -> {
             String name = nameField.getText().trim();

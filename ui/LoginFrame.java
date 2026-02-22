@@ -76,7 +76,7 @@ public class LoginFrame extends JFrame {
         gbc.insets = new Insets(15, 5, 5, 5);
         JButton loginBtn = new JButton("Login");
         loginBtn.setBackground(new Color(34, 85, 136));
-        loginBtn.setForeground(Color.WHITE);
+        loginBtn.setForeground(Color.BLACK);
         loginBtn.setFont(new Font("Arial", Font.BOLD, 13));
         loginBtn.setFocusPainted(false);
         loginBtn.addActionListener(this::handleLogin);

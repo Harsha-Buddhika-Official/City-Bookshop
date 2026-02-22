@@ -56,19 +56,19 @@ public class ManagerDashboard extends CashierDashboard {
         panel.setBorder(BorderFactory.createTitledBorder("Manager Actions"));
 
         JButton addBookBtn = new JButton("+ Add New Book");
-        styleButton(addBookBtn, new Color(0, 128, 0));
+        styleButton(addBookBtn, new Color(0, 0, 0));
         addBookBtn.addActionListener(e -> showAddBookDialog());
 
         JButton addCategoryBtn = new JButton("+ Add Category");
-        styleButton(addCategoryBtn, new Color(0, 100, 160));
+        styleButton(addCategoryBtn, new Color(0, 0, 0));
         addCategoryBtn.addActionListener(e -> showAddCategoryDialog());
 
         JButton createAccountBtn = new JButton("+ Create Account");
-        styleButton(createAccountBtn, new Color(150, 0, 150));
+        styleButton(createAccountBtn, new Color(0, 0, 0));
         createAccountBtn.addActionListener(e -> showCreateAccountDialog());
 
         JButton viewAccountsBtn = new JButton("View All Accounts");
-        styleButton(viewAccountsBtn, new Color(100, 100, 100));
+        styleButton(viewAccountsBtn, new Color(0, 0, 0));
         viewAccountsBtn.addActionListener(e -> showAllAccounts());
 
         panel.add(addBookBtn);
@@ -181,7 +181,7 @@ public class ManagerDashboard extends CashierDashboard {
         gbc.gridx = 1; panel.add(descField, gbc);
 
         JButton saveBtn = new JButton("Save Category");
-        styleButton(saveBtn, new Color(0, 100, 160));
+        styleButton(saveBtn, Color.black);
         gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 2; gbc.insets = new Insets(15, 5, 5, 5);
         panel.add(saveBtn, gbc);
 
