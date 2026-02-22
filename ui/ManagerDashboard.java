@@ -56,19 +56,19 @@ public class ManagerDashboard extends CashierDashboard {
         panel.setBorder(BorderFactory.createTitledBorder("Manager Actions"));
 
         JButton addBookBtn = new JButton("+ Add New Book");
-        styleButton(addBookBtn, new Color(0, 0, 0));
+        styleButton(addBookBtn, new Color(255, 255, 255), Color.BLACK);
         addBookBtn.addActionListener(e -> showAddBookDialog());
 
         JButton addCategoryBtn = new JButton("+ Add Category");
-        styleButton(addCategoryBtn, new Color(0, 0, 0));
+        styleButton(addCategoryBtn, new Color(255, 255, 255), Color.BLACK);
         addCategoryBtn.addActionListener(e -> showAddCategoryDialog());
 
         JButton createAccountBtn = new JButton("+ Create Account");
-        styleButton(createAccountBtn, new Color(0, 0, 0));
+        styleButton(createAccountBtn, new Color(255, 255, 255), Color.BLACK);
         createAccountBtn.addActionListener(e -> showCreateAccountDialog());
 
         JButton viewAccountsBtn = new JButton("View All Accounts");
-        styleButton(viewAccountsBtn, new Color(0, 0, 0));
+        styleButton(viewAccountsBtn, new Color(255, 255, 255), Color.BLACK);
         viewAccountsBtn.addActionListener(e -> showAllAccounts());
 
         panel.add(addBookBtn);
@@ -79,9 +79,9 @@ public class ManagerDashboard extends CashierDashboard {
         return panel;
     }
 
-    private void styleButton(JButton btn, Color color) {
-        btn.setBackground(color);
-        btn.setForeground(Color.WHITE);
+    private void styleButton(JButton btn, Color bgColor, Color fgColor) {
+        btn.setBackground(bgColor);
+        btn.setForeground(fgColor);
         btn.setFocusPainted(false);
         btn.setFont(new Font("Arial", Font.BOLD, 12));
     }
@@ -107,22 +107,28 @@ public class ManagerDashboard extends CashierDashboard {
         JTextField descField = new JTextField(15);
 
         String[][] fields = {
-                {"ISBN:", null}, {"Name:", null}, {"Author:", null},
-                {"Category:", null}, {"Price ($):", null}, {"Stock Qty:", null}, {"Description:", null}
+                { "ISBN:", null }, { "Name:", null }, { "Author:", null },
+                { "Category:", null }, { "Price ($):", null }, { "Stock Qty:", null }, { "Description:", null }
         };
-        Component[] inputs = {isbnField, nameField, authorField, categoryBox, priceField, stockField, descField};
+        Component[] inputs = { isbnField, nameField, authorField, categoryBox, priceField, stockField, descField };
 
-        String[] labels = {"ISBN:", "Name:", "Author:", "Category:", "Price ($):", "Stock Qty:", "Description:"};
+        String[] labels = { "ISBN:", "Name:", "Author:", "Category:", "Price ($):", "Stock Qty:", "Description:" };
         for (int i = 0; i < labels.length; i++) {
-            gbc.gridx = 0; gbc.gridy = i; gbc.weightx = 0;
+            gbc.gridx = 0;
+            gbc.gridy = i;
+            gbc.weightx = 0;
             panel.add(new JLabel(labels[i]), gbc);
-            gbc.gridx = 1; gbc.weightx = 1.0;
+            gbc.gridx = 1;
+            gbc.weightx = 1.0;
             panel.add(inputs[i], gbc);
         }
 
         JButton saveBtn = new JButton("Save Book");
-        styleButton(saveBtn, new Color(0, 128, 0));
-        gbc.gridx = 0; gbc.gridy = labels.length; gbc.gridwidth = 2; gbc.insets = new Insets(15, 5, 5, 5);
+        styleButton(saveBtn, Color.WHITE, Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = labels.length;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(15, 5, 5, 5);
         panel.add(saveBtn, gbc);
 
         saveBtn.addActionListener(e -> {
@@ -136,20 +142,23 @@ public class ManagerDashboard extends CashierDashboard {
                 String desc = descField.getText().trim();
 
                 if (isbn.isEmpty() || name.isEmpty() || author.isEmpty()) {
-                    JOptionPane.showMessageDialog(dialog, "ISBN, Name and Author are required.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dialog, "ISBN, Name and Author are required.", "Error",
+                            JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
                 Book newBook = new Book(isbn, name, author, category, price, stock, desc);
                 if (bookService.addBook(newBook)) {
-                    JOptionPane.showMessageDialog(dialog, "Book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dialog, "Book added successfully!", "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
                     loadBooks(bookService.getAllBooks());
                     dialog.dispose();
                 } else {
                     JOptionPane.showMessageDialog(dialog, "ISBN already exists.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(dialog, "Invalid price or stock value.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "Invalid price or stock value.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -173,16 +182,28 @@ public class ManagerDashboard extends CashierDashboard {
         JTextField nameField = new JTextField(15);
         JTextField descField = new JTextField(15);
 
-        gbc.gridx = 0; gbc.gridy = 0; panel.add(new JLabel("Category ID:"), gbc);
-        gbc.gridx = 1; panel.add(idField, gbc);
-        gbc.gridx = 0; gbc.gridy = 1; panel.add(new JLabel("Name:"), gbc);
-        gbc.gridx = 1; panel.add(nameField, gbc);
-        gbc.gridx = 0; gbc.gridy = 2; panel.add(new JLabel("Description:"), gbc);
-        gbc.gridx = 1; panel.add(descField, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(new JLabel("Category ID:"), gbc);
+        gbc.gridx = 1;
+        panel.add(idField, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(new JLabel("Name:"), gbc);
+        gbc.gridx = 1;
+        panel.add(nameField, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(new JLabel("Description:"), gbc);
+        gbc.gridx = 1;
+        panel.add(descField, gbc);
 
         JButton saveBtn = new JButton("Save Category");
-        styleButton(saveBtn, Color.black);
-        gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 2; gbc.insets = new Insets(15, 5, 5, 5);
+        styleButton(saveBtn, Color.WHITE, Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(15, 5, 5, 5);
         panel.add(saveBtn, gbc);
 
         saveBtn.addActionListener(e -> {
@@ -194,10 +215,12 @@ public class ManagerDashboard extends CashierDashboard {
             }
             Category cat = new Category(idField.getText(), name, desc);
             if (categoryService.addCategory(cat)) {
-                JOptionPane.showMessageDialog(dialog, "Category added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "Category added successfully!", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
                 dialog.dispose();
             } else {
-                JOptionPane.showMessageDialog(dialog, "Category ID already exists.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "Category ID already exists.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -220,20 +243,26 @@ public class ManagerDashboard extends CashierDashboard {
         JPasswordField passwordField = new JPasswordField(15);
         JTextField fullNameField = new JTextField(15);
         JTextField emailField = new JTextField(15);
-        JComboBox<String> roleBox = new JComboBox<>(new String[]{"Cashier", "Manager"});
+        JComboBox<String> roleBox = new JComboBox<>(new String[] { "Cashier", "Manager" });
 
-        String[] labels = {"Username:", "Password:", "Full Name:", "Email:", "Role:"};
-        Component[] inputs = {usernameField, passwordField, fullNameField, emailField, roleBox};
+        String[] labels = { "Username:", "Password:", "Full Name:", "Email:", "Role:" };
+        Component[] inputs = { usernameField, passwordField, fullNameField, emailField, roleBox };
         for (int i = 0; i < labels.length; i++) {
-            gbc.gridx = 0; gbc.gridy = i; gbc.weightx = 0;
+            gbc.gridx = 0;
+            gbc.gridy = i;
+            gbc.weightx = 0;
             panel.add(new JLabel(labels[i]), gbc);
-            gbc.gridx = 1; gbc.weightx = 1.0;
+            gbc.gridx = 1;
+            gbc.weightx = 1.0;
             panel.add(inputs[i], gbc);
         }
 
         JButton saveBtn = new JButton("Create Account");
-        styleButton(saveBtn, new Color(150, 0, 150));
-        gbc.gridx = 0; gbc.gridy = labels.length; gbc.gridwidth = 2; gbc.insets = new Insets(15, 5, 5, 5);
+        styleButton(saveBtn, Color.WHITE, Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = labels.length;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(15, 5, 5, 5);
         panel.add(saveBtn, gbc);
 
         saveBtn.addActionListener(e -> {
@@ -244,7 +273,8 @@ public class ManagerDashboard extends CashierDashboard {
             String role = (String) roleBox.getSelectedItem();
 
             if (username.isEmpty() || password.isEmpty() || fullName.isEmpty()) {
-                JOptionPane.showMessageDialog(dialog, "Username, Password, and Full Name are required.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "Username, Password, and Full Name are required.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -257,7 +287,8 @@ public class ManagerDashboard extends CashierDashboard {
             }
 
             if (userService.createAccount(newUser)) {
-                JOptionPane.showMessageDialog(dialog, "Account created successfully!\nRole: " + role, "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "Account created successfully!\nRole: " + role, "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
                 dialog.dispose();
             } else {
                 JOptionPane.showMessageDialog(dialog, "Username already exists.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -273,10 +304,10 @@ public class ManagerDashboard extends CashierDashboard {
         dialog.setSize(500, 350);
         dialog.setLocationRelativeTo(this);
 
-        String[] cols = {"Username", "Full Name", "Email", "Role"};
+        String[] cols = { "Username", "Full Name", "Email", "Role" };
         DefaultListModel<String> listModel = new DefaultListModel<>();
         Object[][] data = userService.getAllUsers().stream()
-                .map(u -> new Object[]{u.getUsername(), u.getFullName(), u.getEmail(), u.getRole()})
+                .map(u -> new Object[] { u.getUsername(), u.getFullName(), u.getEmail(), u.getRole() })
                 .toArray(Object[][]::new);
 
         JTable table = new JTable(data, cols);

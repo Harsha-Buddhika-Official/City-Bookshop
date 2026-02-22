@@ -173,9 +173,12 @@ public class CashierDashboard extends JFrame {
     }
 
     protected JPanel buildTablePanel() {
-        String[] columns = {"ISBN", "Name", "Author", "Category", "Price ($)", "Stock", "Description"};
+        String[] columns = { "ISBN", "Name", "Author", "Category", "Price ($)", "Stock", "Description" };
         tableModel = new DefaultTableModel(columns, 0) {
-            @Override public boolean isCellEditable(int r, int c) { return false; }
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
         };
 
         bookTable = new JTable(tableModel);
@@ -200,7 +203,7 @@ public class CashierDashboard extends JFrame {
     protected void loadBooks(List<Book> books) {
         tableModel.setRowCount(0);
         for (Book book : books) {
-            tableModel.addRow(new Object[]{
+            tableModel.addRow(new Object[] {
                     book.getIsbn(),
                     book.getName(),
                     book.getAuthor(),

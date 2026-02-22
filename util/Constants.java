@@ -10,5 +10,6 @@ public class Constants {
     public static final String ROLE_CASHIER = "CASHIER";
 
     // Prevent instantiation
-    private Constants() {}
+    private Constants() {
+    }
 }
